@@ -1,5 +1,5 @@
 import { createContext, FC, useEffect, useState } from "react";
-import IUser from "../interfaces/user";
+import IUser from "../interfaces/IUser";
 
 const appContext = createContext<{
   user: IUser | null | undefined;

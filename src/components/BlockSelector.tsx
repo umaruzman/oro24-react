@@ -1,20 +1,13 @@
 import { FC } from "react";
 
-const blocks: string[] = [
-  "BLOCK-1",
-  "BLOCK-2",
-  "BLOCK-3",
-  "BLOCK-4",
-  "BLOCK-5",
-  "BLOCK-6",
-];
-
 interface BlockSelectorProps {
-  selectedBlock: string;
+  blocks: string[];
+  selectedBlock: string | null;
   setSelectedBlock: (block: string) => void;
 }
 
 const BlockSelector: FC<BlockSelectorProps> = ({
+  blocks,
   selectedBlock,
   setSelectedBlock,
 }) => {
