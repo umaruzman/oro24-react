@@ -3,7 +3,7 @@ import IUser from "../interfaces/user";
 
 const appContext = createContext<{
   user: IUser | null | undefined;
-  setUser: React.Dispatch<React.SetStateAction<IUser | null | undefined>>;
+  setUser: (user: IUser | null | undefined) => void;
 }>({
   user: null,
   setUser: () => {},
@@ -14,15 +14,16 @@ interface AppContextProviderProps {
 }
 
 const AppContextProvider: FC<AppContextProviderProps> = ({ children }) => {
-  const [user, setUser] = useState<IUser | null | undefined>(null);
+  const [user, setUserVal] = useState<IUser | null | undefined>(
+    localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user") as string)
+      : null
+  );
 
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-    }
-  }, [user]);
+  const setUser = (user: IUser | null | undefined) => {
+    localStorage.setItem("user", JSON.stringify(user));
+    setUserVal(user);
+  };
 
   useEffect(() => {
     const user = localStorage.getItem("user");
