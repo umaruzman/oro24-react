@@ -1,0 +1,11 @@
+.form-input {
+    @apply border bg-[#EAF0FD] border-[#CFD4DA] rounded-[5px] py-[10px] px-[20px] text-[#000000] placeholder-[#000000] focus:outline-[#61ACCB];
+}
+
+.form-button {
+    @apply bg-[#61ACCB] rounded-[5px]  py-[10px] px-[20px] text-white font-bold hover:bg-[#6fbfe2] transition-all active:scale-[0.98];
+}
+
+.form-error-message {
+    @apply text-red-500 text-[12px];
+}
